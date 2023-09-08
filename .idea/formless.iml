@@ -40,6 +40,8 @@
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v7.0.7.2, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.0.7.2, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.5, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="base64 (v0.1.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.19, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.16.0, rbenv: 2.7.3) [gem]" level="application" />
@@ -66,6 +68,8 @@
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.7.4, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.5, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jsbundling-rails (v1.1.2, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v2.6.3, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.3, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.21.3, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.2, rbenv: 2.7.3) [gem]" level="application" />
@@ -82,6 +86,8 @@
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.9, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.15.4, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parallel (v1.23.0, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parser (v3.2.2.3, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.14.2, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry-byebug (v3.10.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.3, rbenv: 2.7.3) [gem]" level="application" />
@@ -93,13 +99,17 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.2.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.0.7.2, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis (v4.8.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.8.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.3.8, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.6, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.56.2, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.29.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-openai (v5.1.0, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.9.0, rbenv: 2.7.3) [gem]" level="application" />
@@ -112,6 +122,7 @@
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v1.4.0, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, rbenv: 2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.4.2, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, rbenv: 2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webdrivers (v5.3.1, rbenv: 2.7.3) [gem]" level="application" />
