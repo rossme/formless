@@ -1,4 +1,4 @@
-require 'openai'
+# frozen_string_literal: true
 
 module PromptService
   class Request < Base
@@ -23,7 +23,7 @@ module PromptService
 
     def validate_token_count
       count = OpenAI.rough_token_count
-      raise I18n.t 'prompt_service.error.token_count' if count > 100
+      raise I18n.t 'prompt_service.error.token_count' if count > 50
     end
   end
 end

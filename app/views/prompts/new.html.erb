@@ -1,7 +1,7 @@
 <div class="container form-group">
   <h4 class="m-2 py-3">What would you like to do today?</h4>
   <%= simple_form_for :prompt, url: prompts_path, defaults: { input_html: { class: 'p-1 m-2 w-100' } } do |f| %>
-    <%= f.input :text, as: :text, label: false, placeholder: t('prompt.form') %>
+    <%= f.input :text, as: :text, label: false, placeholder: t('prompt_service.form') %>
     <%= f.button :submit, 'Generate', class: 'btn btn-light m-2' %>
   <% end %>
 </div>
