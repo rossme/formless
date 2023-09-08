@@ -32,7 +32,7 @@
 en:
   hello: "Hello world"
   prompt_service:
-    form: "e.g., Create a new client, John Smith, born on 02/03/1980..."
+    form: "You can create a new client, e.g., 'Create a new client called Jane Smith, born on...' and find out other information related to your CRM e.g., 'How many clients do I have?'. A combination of AI, a fine-tuned model integrated into a Rails application that handles the generated response."
     error:
       token_count: 'You have exceeded the number of prompt characters permitted'
       system_content: "Please enter a valid service name"
