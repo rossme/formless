@@ -2,7 +2,6 @@ class PromptsController < ApplicationController
   before_action :set_user, :set_prompts
   before_action :set_text, :call_prompt_service, only: %i[create]
 
-  # TODO: write rspec tests for models, controller and services
   def new; end
 
   def create
