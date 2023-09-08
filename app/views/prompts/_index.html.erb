@@ -3,11 +3,13 @@
 
   <% @prompts.each_with_index do |prompt, index| %>
     <div class="p-2 m-2 w-100 <%= index.odd? ? '' : 'bg-light text-dark' %>">
-      Response <%= prompt.id %>:<br><%= JSON.pretty_generate(prompt.output) %><br>
-      <div class="py-2">
-<!--        Generated Hash:<br><%#= JSON.pretty_generate(prompt.message_content) %><br>-->
+      <div>User input: <%= prompt.input %></div>
+
+      AI generated response <%= prompt.id %>:<br><%= JSON.pretty_generate(prompt.output) %><br>
+
+      <div class="my-2">
+        AI generated response message: <%= prompt.message_content %><br>
       </div>
-      <div>User Input: <%= prompt.input %></div>
     </div>
   <% end %>
 </div>

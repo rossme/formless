@@ -5,8 +5,7 @@ class PromptsController < ApplicationController
   def new; end
 
   def create
-    response = @service.call
-    raise StandardError, response.errors.full_messages.join(', ') unless response.valid?
+    raise StandardError, response.errors.full_messages.join(', ') unless @service.valid?
 
     respond_to do |format|
       format.html { redirect_to new_prompt_url, notice: 'The prompt response was successfully created.' }
@@ -22,6 +21,7 @@ class PromptsController < ApplicationController
   def call_prompt_service
     @service ||= PromptService::Request.new(user: @user, prompt: @text)
     raise StandardError, @service.errors.full_messages.join(', ') unless @service.valid?
+    @service.call
   end
 
   def set_user
