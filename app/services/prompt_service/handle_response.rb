@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'openai'
 
 module PromptService
@@ -24,23 +26,27 @@ module PromptService
     private
 
     def create_prompt_transaction
-      @created_prompt = Prompt.new(user: user, input: prompt, output: ai_response)
+      @created_prompt = Prompt.new(user: user, input: prompt, output: handle_output)
       created_prompt.save
     end
 
-    def hash_response
-      {
-        created_prompt: created_prompt,
-        message: parsed_message
-      }
+    def handle_output
+      parsed_content || ai_response
     end
 
-    def parsed_message
-      @parsed_message ||= message_content.include?('=>') ? JSON.parse(message_content.gsub!('=>', ': ')) : message_content
+    def parsed_content
+      ai_response['choices'][0]['message']['content'] = JSON.parse(message_content)
+      ai_response
+    rescue JSON::ParserError
+      false
+    end
+
+    def message_errors
+      # ai_response&.dig('error', 'message')
     end
 
     def message_content
-      @message_content ||= ai_response.dig("choices", 0, "message", "content")
+      @message_content ||= ai_response.dig('choices', 0, 'message', 'content')
     end
 
     def take_action

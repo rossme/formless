@@ -31,5 +31,8 @@
 
 en:
   hello: "Hello world"
-  prompt:
+  prompt_service:
     form: "e.g., Create a new client, John Smith, born on 02/03/1980..."
+    error:
+      token_count: 'You have exceeded the number of prompt characters permitted'
+      system_content: "Please enter a valid service name"

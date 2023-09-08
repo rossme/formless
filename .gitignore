@@ -28,7 +28,9 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
-/.env
+.env
+Gemfile
+.idea
 
 /public/assets
 
