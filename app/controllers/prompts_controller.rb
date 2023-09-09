@@ -9,7 +9,7 @@ class PromptsController < ApplicationController
 
     # PromptService::HandleAction.new(user: @user, prompt: @text, ai_response: @service.response).call
 
-    redirect_to new_prompt_url flash: { success: 'Response created' }
+    redirect_to prompts_url, flash: { success: 'Response created' }
   rescue PromptError, StandardError => e
     redirect_to new_prompt_url, alert: e
   end
