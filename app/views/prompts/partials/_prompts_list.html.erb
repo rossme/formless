@@ -1,0 +1,24 @@
+<div class="card-header">
+  <h6 class="lead text-center pt-2">AI Generated Response</h6>
+</div>
+<div class="card-body">
+  <% @prompts.each do |prompt| %>
+    <div class="p-3 m-3">
+      <p class="my-3 text-secondary">
+        Prompt <%= prompt.id %>
+      </p>
+      <p class="my-3">
+        <code><%= prompt.input %></code>
+      </p>
+      <p class="my-3 text-secondary">
+        AI response hash or string:
+      </p>
+      <code><%= JSON.pretty_generate(prompt.message_content) %></code>
+      <p class="my-3 text-secondary">
+        AI response object:
+      </p>
+      <code><%= JSON.pretty_generate(prompt.output) %></code>
+    </div>
+  <% end %>
+
+</div>
