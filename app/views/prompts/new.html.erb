@@ -1,8 +1,13 @@
 <div class="container">
-  <%= simple_form_for :prompt, url: prompts_path, defaults: { input_html: { class: 'form-group w-100 p-2 m-2' } } do |f| %>
-    <%= f.input :text, as: :text, label: false, placeholder: t('prompt_service.form') %>
-    <%= f.button :submit, 'Generate', class: 'btn btn-light m-2' %>
-  <% end %>
-</div>
+  <div class="py-5 text-center m-3">
+    <h6 class="lead w-100 mb-3">An MVP for onboarding new clients with minimal effort.<br>Using a combination of AI, a fine-tuned model and a Ruby on Rails application that handles an action from the generated response.</h6>
 
-<%= render 'index' %>
+    <%= simple_form_for :prompt, url: prompts_path, defaults: { input_html: { rows: '4', class: 'shadow-sm p-3 bg-body rounded col-md-12 p-3 my-3' } } do |f| %>
+      <%= f.input :text, as: :text, label: false, placeholder: t('prompt_service.form') %>
+      <%= f.button :submit, 'Generate', class: 'btn btn-secondary m-2' %>
+    <% end %>
+
+  </div>
+
+  <%= render 'index' %>
+</div>
