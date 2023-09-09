@@ -3,10 +3,6 @@
 module PromptService
   class Request < Base
 
-    def initialize(user:, prompt:)
-      super
-    end
-
     attr_reader :response
 
     def call

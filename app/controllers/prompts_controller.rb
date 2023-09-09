@@ -5,12 +5,12 @@ class PromptsController < ApplicationController
   def new; end
 
   def create
-    raise StandardError, response.errors.full_messages.join(', ') unless @service.valid?
+    raise PromptError, response.errors.full_messages.join(', ') unless @service.valid?
 
-    respond_to do |format|
-      format.html { redirect_to new_prompt_url, notice: 'The prompt response was successfully created.' }
-    end
-  rescue => e
+    # PromptService::HandleAction.new(user: @user, prompt: @text, ai_response: @service.response).call
+
+    redirect_to new_prompt_url flash: { success: 'Response created' }
+  rescue PromptError, StandardError => e
     redirect_to new_prompt_url, alert: e
   end
 
@@ -20,7 +20,8 @@ class PromptsController < ApplicationController
 
   def call_prompt_service
     @service ||= PromptService::Request.new(user: @user, prompt: @text)
-    raise StandardError, @service.errors.full_messages.join(', ') unless @service.valid?
+    raise PromptError, @service.errors.full_messages.join(', ') unless @service.valid?
+
     @service.call
   end
 
