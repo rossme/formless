@@ -1,24 +1,14 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app for onboarding new clients with minimal effort. Using a combination of AI, a fine-tuned model and Ruby on Rails, the generated responses are used to create actions within the application.
 
-Things you may want to cover:
+<!-- MARKDOWN LINKS & IMAGES -->
 
-* Ruby version
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-* System dependencies
+[Ruby-lang.org]: https://img.shields.io/badge/Ruby-FF2D20?style=for-the-badge&logo=ruby&logoColor=white
 
-* Configuration
+[Ruby-url]: https://www.ruby-lang.org/
 
-* Database creation
+[Rubyonrails.org]: https://img.shields.io/badge/RubyOnRails-c53024?style=for-the-badge&logo=rubyonrails&logoColor=white
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Rails-url]: https://guides.rubyonrails.org/v6.1/
