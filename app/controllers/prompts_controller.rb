@@ -7,7 +7,8 @@ class PromptsController < ApplicationController
   def create
     raise PromptError, response.errors.full_messages.join(', ') unless @service.valid?
 
-    # PromptService::HandleAction.new(user: @user, prompt: @text, ai_response: @service.response).call
+    # Handle the prompt action worker in the background
+    ActionJob.perform_async(@service.prompt.id)
 
     redirect_to prompts_url, flash: { success: 'Response created' }
   rescue PromptError, StandardError => e
