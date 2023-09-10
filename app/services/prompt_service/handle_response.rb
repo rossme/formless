@@ -18,7 +18,6 @@ module PromptService
     def call
       ActiveRecord::Base.transaction do
         create_prompt_transaction
-        # take_action(s)
       end
       self
     end
@@ -26,7 +25,12 @@ module PromptService
     private
 
     def create_prompt_transaction
-      @created_prompt = Prompt.new(user: user, input: prompt, output: handle_output)
+      # Update actioned after the ActionJob has run
+      @created_prompt = Prompt.new(
+        actionable: user,
+        input: prompt,
+        output: handle_output
+      )
       created_prompt.save
     end
 
@@ -46,11 +50,7 @@ module PromptService
     end
 
     def message_content
-      @message_content ||= ai_response.dig('choices', 0, 'message', 'content')
-    end
-
-    def take_action
-      # do take_action stuff...
+      @message_content ||= ai_response.dig('choices', 0, 'message', 'content').strip
     end
   end
 end
