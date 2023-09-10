@@ -1,7 +1,7 @@
 <div class="card-header">
-  <h6 class="lead text-center pt-2">Onboard new clients with minimal effort using a custom fine-tuned AI model through a Ruby on Rails application</h6>
+  <h6 class="lead text-center pt-2">Onboard new clients easily using a custom fine-tuned AI model handled in a Ruby on Rails application.</h6>
 </div>
-<div class="card-body m-5">
+<div class="row card-body m-4">
   <%= simple_form_for :prompt, url: prompts_path do |f| %>
     <%= f.input :text, as: :text, label: false, input_html: { class: 'form-control form-control-md' }, placeholder: t('prompt_service.form') %>
     <%= f.button :submit, 'Generate', class: 'btn btn-light text-secondary border mt-2' %>
