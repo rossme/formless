@@ -5,33 +5,35 @@ require 'openai'
 module PromptService
   class HandleResponse
     include ActiveModel::Validations
-    validates :user, :prompt, :ai_response, presence: true
+    validates :user, :user_prompt, :ai_response, presence: true
 
-    def initialize(user:, prompt:, ai_response:)
+    def initialize(user:, user_prompt:, ai_response:)
       @user        = user
-      @prompt      = prompt
+      @user_prompt = user_prompt
       @ai_response = ai_response
     end
 
-    attr_reader :user, :prompt, :ai_response, :created_prompt
+    attr_reader :user, :user_prompt, :ai_response, :persisted_prompt
 
     def call
       ActiveRecord::Base.transaction do
-        create_prompt_transaction
+        persist_prompt_transaction
       end
-      self
+      Rails.logger.info "Prompt created: #{persisted_prompt.inspect}"
+      persisted_prompt
+    rescue PromptError, ActiveRecord::RecordInvalid => e
+      raise e
     end
 
     private
 
-    def create_prompt_transaction
-      # Update actioned after the ActionJob has run
-      @created_prompt = Prompt.new(
-        actionable: user,
-        input: prompt,
+    def persist_prompt_transaction
+      @persisted_prompt = Prompt.new(
+        user: user,
+        input: user_prompt,
         output: handle_output
       )
-      created_prompt.save
+      persisted_prompt.save
     end
 
     def handle_output

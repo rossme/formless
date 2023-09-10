@@ -12,32 +12,43 @@ module ActionService
     include ActiveModel::Validations
     validates :prompt_id, presence: true
 
-    def initialize(prompt_id:)
-      @prompt_id = prompt_id
+    def initialize(persisted_prompt_id:)
+      @persisted_prompt_id = persisted_prompt_id
     end
 
-    attr_reader :prompt, :prompt_id, :action_type
+    attr_reader :persisted_prompt_id, :prompt, :action_type, :prompt_action
 
     def call
       ActiveRecord::Base.transaction do
         fetch_prompt
         fetch_action_type
         create_prompt_action
+        update_prompt
       end
+    rescue ActionError => e
+      raise e
     end
 
     private
 
     def fetch_prompt
-      @prompt = Prompt.find(prompt_id)
+      @prompt = Prompt.find(persisted_prompt_id)
     rescue ActiveRecord::RecordNotFound
       raise ActionError, I18n.t('action_service.error.prompt_not_found')
     end
 
     def create_prompt_action
-      send(action_type)
+      @prompt_action = send(action_type)
     rescue NoMethodError
       raise ActionError, I18n.t('action_service.error.no_method_error')
+    end
+
+    def update_prompt
+      # Possibility to add polymorphic actionable association here, i.e., Client, if Client created
+      prompt.update(
+        action: prompt_action,
+        actioned: true
+      )
     end
 
     def get_client_count

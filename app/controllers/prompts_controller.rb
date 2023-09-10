@@ -1,18 +1,17 @@
 class PromptsController < ApplicationController
   before_action :set_user, :set_prompts
   before_action :set_text, :call_prompt_service, only: %i[create]
+  before_action :set_action_prompts, only: %i[index]
 
-  def new; end
+  def index; end
 
   def create
     raise PromptError, response.errors.full_messages.join(', ') unless @service.valid?
 
-    # Handle the prompt action worker in the background
-    ActionJob.perform_async(@service.prompt.id)
-
+    ActionJob.perform_async(@service.persisted_prompt.id)
     redirect_to prompts_url, flash: { success: 'Response created' }
-  rescue PromptError, StandardError => e
-    redirect_to new_prompt_url, alert: e
+  rescue PromptService::PromptError, StandardError => e
+    redirect_to prompts_url, alert: e
   end
 
   def strong_params
@@ -20,8 +19,8 @@ class PromptsController < ApplicationController
   end
 
   def call_prompt_service
-    @service ||= PromptService::Request.new(user: @user, prompt: @text)
-    raise PromptError, @service.errors.full_messages.join(', ') unless @service.valid?
+    @service ||= PromptService::Request.new(user: @user, user_prompt: @text)
+    raise PromptService::PromptError, @service.errors.full_messages.join(', ') unless @service.valid?
 
     @service.call
   end
@@ -36,5 +35,9 @@ class PromptsController < ApplicationController
 
   def set_text
     @text = strong_params[:text]
+  end
+
+  def set_action_prompts
+    @action_prompts = current_user.prompts.where(actioned: true).reverse_order
   end
 end

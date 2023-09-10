@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_214810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "actioned", default: false
+    t.string "action"
     t.string "actionable_type"
     t.integer "actionable_id"
     t.index ["actionable_type", "actionable_id"], name: "index_prompts_on_actionable"

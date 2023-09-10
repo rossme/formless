@@ -3,30 +3,16 @@
 </div>
 
 <div class="card-body">
-  <%# @prompts.each do |prompt| %>
-  <%# 'work in progress dummy data' %>
+
+  <% @action_prompts.each do |prompt| %>
     <div class="p-3 m-3">
       <p class="my-3 text-secondary">
-        Prompt: <code>95</code>
+        Prompt: <code><%= prompt.id %></code>
       </p>
       <p class="my-3">
-        <code>Client created</code>
+        <code><%= prompt.action %></code>
       </p>
-      <p class="my-3 text-secondary">
-        Object:
-      </p>
-      <p class="my-3">
-        <code>{ "id": "12", "first_name": "Sarah", "middle_name": "Jane", "last_name": "Smith", "phone_number": "", "date_of_birth": "02/10/1987", "nationality": "", "national_number": "", "gender": "" }</code>
-      </p>
-<!--      <p class="my-3 text-secondary">-->
-<!--        AI response hash or string:-->
-<!--      </p>-->
-<!--      <code><%#= JSON.pretty_generate(prompt.message_content) %></code>-->
-<!--      <p class="my-3 text-secondary">-->
-<!--        AI response object:-->
-<!--      </p>-->
-<!--      <code><%#= JSON.pretty_generate(prompt.output) %></code>-->
     </div>
-  <%# end %>
+  <% end %>
 
 </div>
