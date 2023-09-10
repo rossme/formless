@@ -5,6 +5,8 @@ module PromptService
     include ActiveModel::Validations
     validates :user, :user_prompt, presence: true
 
+    TRAINING_FILE_ID = 3
+
     def initialize(user:, user_prompt:)
       @user = user
       @user_prompt = user_prompt
@@ -35,7 +37,7 @@ module PromptService
     end
 
     def training_file_object
-      AiTrainingFile.find(3)
+      AiTrainingFile.find(TRAINING_FILE_ID)
     end
 
     def fine_tune_model

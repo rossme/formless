@@ -9,6 +9,7 @@ class PromptsController < ApplicationController
     raise PromptError, response.errors.full_messages.join(', ') unless @service.valid?
 
     ActionJob.perform_async(@service.persisted_prompt.id)
+    sleep(3) # probably not needed
     redirect_to prompts_url, flash: { success: 'Response created' }
   rescue PromptService::PromptError, StandardError => e
     redirect_to prompts_url, alert: e

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_214810) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_224039) do
   create_table "ai_training_files", force: :cascade do |t|
     t.text "training_file"
     t.json "training_job"
@@ -25,13 +25,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_214810) do
     t.string "middle_name"
     t.string "last_name"
     t.string "email"
-    t.string "mobile_phone"
+    t.string "phone_number"
     t.string "date_of_birth"
     t.string "national_number"
     t.string "nationality"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 

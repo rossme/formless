@@ -10,7 +10,7 @@
         Prompt: <code><%= prompt.id %></code>
       </p>
       <p class="my-3">
-        <code><%= prompt.action %></code>
+        <code><%= prompt.actionable&.inspect || prompt.action %></code>
       </p>
     </div>
   <% end %>
