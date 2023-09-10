@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_145920) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_224039) do
   create_table "ai_training_files", force: :cascade do |t|
     t.text "training_file"
     t.json "training_job"
@@ -20,12 +20,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_145920) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "date_of_birth"
+    t.string "national_number"
+    t.string "nationality"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "gender"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
   create_table "prompts", force: :cascade do |t|
     t.text "input"
     t.json "output"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "actioned", default: false
+    t.string "action"
+    t.string "actionable_type"
+    t.integer "actionable_id"
+    t.index ["actionable_type", "actionable_id"], name: "index_prompts_on_actionable"
     t.index ["user_id"], name: "index_prompts_on_user_id"
   end
 
@@ -41,5 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_145920) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "users"
   add_foreign_key "prompts", "users"
 end

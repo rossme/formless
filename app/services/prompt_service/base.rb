@@ -3,14 +3,16 @@
 module PromptService
   class Base
     include ActiveModel::Validations
-    validates :user, :prompt, presence: true
+    validates :user, :user_prompt, presence: true
 
-    def initialize(user:, prompt:)
+    TRAINING_FILE_ID = 3
+
+    def initialize(user:, user_prompt:)
       @user = user
-      @prompt = prompt
+      @user_prompt = user_prompt
     end
 
-    attr_reader :user, :prompt
+    attr_reader :user, :user_prompt, :persisted_prompt
 
     def client
       OpenAI::Client.new
@@ -21,7 +23,7 @@ module PromptService
         model: fine_tune_model,
         messages: [
           { role: 'system', content: system_content },
-          { role: 'user', content: prompt }
+          { role: 'user', content: user_prompt }
         ],
         temperature: 0.7
       }
@@ -35,7 +37,7 @@ module PromptService
     end
 
     def training_file_object
-      AiTrainingFile.find(3)
+      AiTrainingFile.find(TRAINING_FILE_ID)
     end
 
     def fine_tune_model
@@ -43,7 +45,7 @@ module PromptService
     end
 
     def handle_response
-      PromptService::HandleResponse.new(user: user, prompt: prompt, ai_response: response).call
+      @persisted_prompt = PromptService::HandleResponse.new(user: user, user_prompt: user_prompt, ai_response: response).call
     end
   end
 end
