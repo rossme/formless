@@ -36,3 +36,8 @@ en:
     error:
       token_count: 'You have exceeded the number of prompt characters permitted'
       system_content: "Please enter a valid service name"
+  action_service:
+    success:
+      create_client: "Client created"
+    error:
+      variable_error: "Unable to find an ai response variable match"

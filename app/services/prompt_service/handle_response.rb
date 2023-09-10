@@ -5,29 +5,35 @@ require 'openai'
 module PromptService
   class HandleResponse
     include ActiveModel::Validations
-    validates :user, :prompt, :ai_response, presence: true
+    validates :user, :user_prompt, :ai_response, presence: true
 
-    def initialize(user:, prompt:, ai_response:)
+    def initialize(user:, user_prompt:, ai_response:)
       @user        = user
-      @prompt      = prompt
+      @user_prompt = user_prompt
       @ai_response = ai_response
     end
 
-    attr_reader :user, :prompt, :ai_response, :created_prompt
+    attr_reader :user, :user_prompt, :ai_response, :persisted_prompt
 
     def call
       ActiveRecord::Base.transaction do
-        create_prompt_transaction
-        # take_action(s)
+        persist_prompt_transaction
       end
-      self
+      Rails.logger.info "Prompt created: #{persisted_prompt.inspect}"
+      persisted_prompt
+    rescue PromptError, ActiveRecord::RecordInvalid => e
+      raise e
     end
 
     private
 
-    def create_prompt_transaction
-      @created_prompt = Prompt.new(user: user, input: prompt, output: handle_output)
-      created_prompt.save
+    def persist_prompt_transaction
+      @persisted_prompt = Prompt.new(
+        user: user,
+        input: user_prompt,
+        output: handle_output
+      )
+      persisted_prompt.save
     end
 
     def handle_output
@@ -46,11 +52,7 @@ module PromptService
     end
 
     def message_content
-      @message_content ||= ai_response.dig('choices', 0, 'message', 'content')
-    end
-
-    def take_action
-      # do take_action stuff...
+      @message_content ||= ai_response.dig('choices', 0, 'message', 'content').strip
     end
   end
 end
