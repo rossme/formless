@@ -10,9 +10,16 @@
         Prompt: <code><%= prompt.id %></code>
       </p>
       <p class="my-3">
-        <code><%= prompt.actionable&.inspect || prompt.action %></code>
+        <% if prompt.actioned == false %>
+          <code>
+            <%= "Missing a valid [VARIABLE_NAME] in prompt response #{prompt.id}: '#{prompt.message_content}'" %>
+          </code>
+        <% else %>
+          <code><%= prompt.actionable&.inspect || prompt.action %></code>
+        <% end %>
       </p>
+
+      <%= render 'prompts/partials/actioned_status', prompt: prompt %>
     </div>
   <% end %>
-
 </div>

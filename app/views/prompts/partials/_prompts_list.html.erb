@@ -18,10 +18,8 @@
         AI response object:
       </p>
       <code><%= JSON.pretty_generate(prompt.output) %></code>
-      <p class="my-3 text-secondary">
-        Actioned: <i class="bi bi-<%= prompt.actioned ? 'check' : 'x' %>-circle"></i>
-      </p>
+
+      <%= render 'prompts/partials/actioned_status', prompt: prompt %>
     </div>
   <% end %>
-
 </div>

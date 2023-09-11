@@ -26,6 +26,7 @@ module ActionService
         update_prompt
       end
     rescue ActionError => e
+      update_prompt
       raise e
     end
 
@@ -36,7 +37,10 @@ module ActionService
     end
 
     def create_prompt_action
+      raise ActionError, I18n.t('action_service.error.action_type') unless action_type
+
       @prompt_action = send(action_type)
+      @actioned = true
     rescue NoMethodError
       raise ActionError, I18n.t('action_service.error.no_method_error')
     end
@@ -45,7 +49,7 @@ module ActionService
       prompt.update(
         actionable: actionable,
         action: prompt_action,
-        actioned: true
+        actioned: @actioned || false
       )
     end
 
