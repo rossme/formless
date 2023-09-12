@@ -41,3 +41,6 @@ en:
       create_client: "Client created"
     error:
       variable_error: "Unable to find an ai response variable match"
+      no_method_error: "Unable to find an ai response method match"
+      action_type: "Unable to find an ai response action type match"
+      no_clients: "No clients for this user found"
