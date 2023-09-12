@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory(:prompt) do
     user { FactoryBot.create(:user) }
-    input { Faker::Lorem.sentence }
+    input { 'How many clients to I have?' }
   end
 end
