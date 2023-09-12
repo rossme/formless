@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Prompt < ApplicationRecord
-  include ActiveModel::Serialization
   validates :user_id, presence: true
+  validates :input, presence: true
+
   belongs_to :user
   belongs_to :actionable, polymorphic: true, optional: true
 
