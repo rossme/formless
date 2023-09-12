@@ -19,6 +19,7 @@ RSpec.describe PromptsController, type: :controller do
 
   describe 'POST #create' do
     login_user
+
     let(:request) { instance_double(PromptService::Request) }
     let(:prompt) { build(:prompt) }
 
