@@ -31,7 +31,7 @@ class PromptsController < ApplicationController
   end
 
   def set_prompts
-    @prompts = current_user.prompts.limit(10).reverse_order
+    @prompts = current_user.prompts.limit(20).reverse_order
   end
 
   def set_text
@@ -39,6 +39,6 @@ class PromptsController < ApplicationController
   end
 
   def set_action_prompts
-    @action_prompts = current_user.prompts.limit(10).reverse_order
+    @action_prompts = current_user.prompts.limit(20).reverse_order
   end
 end
