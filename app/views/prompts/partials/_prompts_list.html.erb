@@ -19,7 +19,9 @@
       </p>
       <code><%= JSON.pretty_generate(prompt.output) %></code>
 
-      <%= render 'prompts/partials/actioned_status', prompt: prompt %>
+      <p class="my-3 text-secondary">
+        Actioned: <i class="bi bi-<%= prompt.actioned ? 'check' : 'x' %>-circle"></i>
+      </p>
     </div>
   <% end %>
 </div>
