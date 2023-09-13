@@ -1,29 +1,24 @@
 class PromptsController < ApplicationController
-  before_action :set_user, :set_prompts
-  before_action :set_text, :call_prompt_service, only: %i[create]
-  before_action :set_action_prompts, only: %i[index]
+  before_action :set_user
+  before_action :set_prompts
 
   def index; end
 
   def create
-    raise PromptService::PromptError, response.errors.full_messages.join(', ') unless @service.valid?
+    service = PromptService::Request.new(user: @user, user_prompt: prompt_params[:input])
+    raise StandardError, service.errors.full_messages.join(', ') unless service.valid? && service.call
 
-    ActionJob.perform_async(@service.persisted_prompt.id)
-    sleep(3) # probably not needed
-    redirect_to prompts_url, flash: { success: 'Response created' }
-  rescue PromptService::PromptError, StandardError => e
-    redirect_to prompts_url, alert: e
+    call_async_service(service)
+  rescue StandardError => e
+    flash[:alert] = e.message
+  ensure
+    redirect_to prompts_path
   end
 
-  def strong_params
-    params.require(:prompt).permit(:text)
-  end
+  private
 
-  def call_prompt_service
-    @service ||= PromptService::Request.new(user: @user, user_prompt: @text)
-    raise PromptService::PromptError, @service.errors.full_messages.join(', ') unless @service.valid?
-
-    @service.call
+  def prompt_params
+    params.require(:prompt).permit(:input)
   end
 
   def set_user
@@ -31,14 +26,12 @@ class PromptsController < ApplicationController
   end
 
   def set_prompts
+    @prompt = Prompt.new
     @prompts = current_user.prompts.limit(20).reverse_order
   end
 
-  def set_text
-    @text = strong_params[:text]
-  end
-
-  def set_action_prompts
-    @action_prompts = current_user.prompts.limit(20).reverse_order
+  def call_async_service(service)
+    ActionJob.perform_async(service.persisted_prompt.id)
+    sleep(3) # temporary - wait for prompt to be created
   end
 end

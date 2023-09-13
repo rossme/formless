@@ -24,10 +24,10 @@ RSpec.describe PromptsController, type: :controller do
     let(:prompt) { build(:prompt) }
 
     it 'should have strong params' do
-      params = ActionController::Parameters.new(prompt: { text: 'How many clients do I have?' })
-      permitted = params.require(:prompt).permit(:text)
-      expect(permitted).to have_key(:text)
-      expect(permitted[:text]).to eq('How many clients do I have?')
+      params = ActionController::Parameters.new(prompt: { input: 'How many clients do I have?' })
+      permitted = params.require(:prompt).permit(:input)
+      expect(permitted).to have_key(:input)
+      expect(permitted[:input]).to eq('How many clients do I have?')
     end
 
     before do
