@@ -32,7 +32,6 @@
 en:
   hello: "Hello world"
   prompt_service:
-    form: ""
     error:
       token_count: 'You have exceeded the number of prompt characters permitted'
       system_content: "Please enter a valid service name"

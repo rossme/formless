@@ -11,7 +11,7 @@
         <div class="col-sm-1 ">
           <!-- Regenerate prompt with hotwire -->
           <%= turbo_frame_tag "first_turbo_frame" do %>
-            <%= button_to prompts_path(prompt: { text: prompt.input }), class: 'btn btn-light text-secondary border' do %>
+            <%= button_to prompts_path(prompt: { input: prompt.input }), class: 'btn btn-light text-secondary border' do %>
               <i class="bi bi-bootstrap-reboot"></i>
             <% end %>
           <% end %>
