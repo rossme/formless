@@ -22,7 +22,7 @@ module ActionService
         update_prompt
       end
     rescue ActionError => e
-      update_prompt(false)
+      handle_error(e)
       raise e
     end
 
@@ -49,7 +49,7 @@ module ActionService
     end
 
     def user
-      prompt.user
+      @user ||= prompt.user
     end
 
     def clients
@@ -61,6 +61,17 @@ module ActionService
 
     def prompt_message
       @prompt_message ||= prompt.message_content
+    end
+
+    def handle_error(error)
+      Rails.logger.info "ActionError: #{error.message}"
+      return if prompt.blank?
+
+      prompt.update(
+        actionable: false,
+        action: error.message,
+        actioned: true
+      )
     end
   end
 end
