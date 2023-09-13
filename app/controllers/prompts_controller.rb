@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PromptsController < ApplicationController
   before_action :set_user
   before_action :set_prompts
