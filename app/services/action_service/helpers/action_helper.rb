@@ -19,20 +19,24 @@ module ActionService
         else
           fetch_type
         end
-
         raise ActionError, I18n.t('action_service.error.variable_error') unless @action_type
       end
 
       def fetch_type
-        ACTION_VARIABLES.each do |v|
-          # Regex pattern to match the variable exactly
-          pattern = /\[#{Regexp.escape(v)}\]/
-
-          if prompt_message.match?(pattern)
-            @action_type = v.downcase
+        ACTION_VARIABLES.each do |var|
+          if regex_match?(var)
+            @action_type = var.downcase
             break
           end
         end
+      end
+
+      def regex_match?(var)
+        prompt_message.match?(regex_pattern(var))
+      end
+
+      def regex_pattern(var)
+        /\[#{Regexp.escape(var)}\]/
       end
     end
   end

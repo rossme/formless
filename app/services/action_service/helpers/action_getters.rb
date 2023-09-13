@@ -5,23 +5,21 @@ module ActionService
     module ActionGetters
 
       def get_client_count
-        count = clients.count.presence || 0
-        prompt_message.gsub('[GET_CLIENT_COUNT]', count.to_s)
+        prompt_message.gsub('[GET_CLIENT_COUNT]', (clients.count.presence || 0).to_s)
       end
 
       def get_first_client
-        client = clients.first
-        prompt_message.gsub('[GET_FIRST_CLIENT]', client.inspect)
+        prompt_message.gsub('[GET_FIRST_CLIENT]', clients.first.inspect)
       end
 
       def get_last_client
-        client = clients.last
-        prompt_message.gsub('[GET_LAST_CLIENT]', client.inspect)
+        prompt_message.gsub('[GET_LAST_CLIENT]', last_client.inspect)
       end
 
       def get_last_client_name
-        client = clients.last
-        prompt_message.gsub('[GET_LAST_CLIENT_NAME]', "#{client.first_name} #{client.last_name}, id: #{client.id}")
+        prompt_message.gsub('[GET_LAST_CLIENT_NAME]',
+                            "#{last_client.first_name} #{last_client.last_name}, id: #{last_client.id}"
+        )
       end
 
       def get_all_clients
@@ -30,7 +28,7 @@ module ActionService
       end
 
       def get_client_phone_numbers
-        client_phone_numbers = clients.map { |c| c.phone_number.to_s.presence }
+        client_phone_numbers = clients.map { |c| c.phone_number.to_s.presence }.compact
         prompt_message.gsub('[GET_CLIENT_PHONE_NUMBERS]', client_phone_numbers.join(', '))
       end
 
@@ -38,6 +36,10 @@ module ActionService
         params = prompt_message.merge(user: user)
         @actionable = Client.new(params)
         I18n.t('action_service.success.create_client')
+      end
+
+      def last_client
+        @last_client ||= clients.last
       end
     end
   end
