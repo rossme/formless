@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_10_224039) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ai_training_files", force: :cascade do |t|
     t.text "training_file"
     t.json "training_job"
@@ -29,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_224039) do
     t.string "date_of_birth"
     t.string "national_number"
     t.string "nationality"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "gender"
@@ -39,13 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_224039) do
   create_table "prompts", force: :cascade do |t|
     t.text "input"
     t.json "output"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "actioned", default: false
     t.string "action"
     t.string "actionable_type"
-    t.integer "actionable_id"
+    t.bigint "actionable_id"
     t.index ["actionable_type", "actionable_id"], name: "index_prompts_on_actionable"
     t.index ["user_id"], name: "index_prompts_on_user_id"
   end

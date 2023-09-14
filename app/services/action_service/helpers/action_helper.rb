@@ -5,12 +5,12 @@ module ActionService
     module ActionHelper
 
       ACTION_VARIABLES = %w[
-        GET_CLIENT_COUNT
+        GET_CLIENTS_COUNT
         GET_LAST_CLIENT
         GET_LAST_CLIENT_NAME
         GET_ALL_CLIENTS
         GET_FIRST_CLIENT
-        GET_CLIENT_PHONE_NUMBERS
+        GET_CLIENTS_PHONE_NUMBERS
       ].freeze
 
       def fetch_action_type
