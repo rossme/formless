@@ -67,11 +67,7 @@ module ActionService
       Rails.logger.info "ActionError: #{error.message}"
       return if prompt.blank?
 
-      prompt.update(
-        actionable: false,
-        action: error.message,
-        actioned: true
-      )
+      update_prompt(actioned: false)
     end
   end
 end

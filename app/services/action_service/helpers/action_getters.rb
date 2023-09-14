@@ -4,8 +4,8 @@ module ActionService
   module Helpers
     module ActionGetters
 
-      def get_client_count
-        prompt_message.gsub('[GET_CLIENT_COUNT]', (clients.count.presence || 0).to_s)
+      def get_clients_count
+        prompt_message.gsub('[GET_CLIENTS_COUNT]', (clients.count.presence || 0).to_s)
       end
 
       def get_first_client
@@ -27,9 +27,9 @@ module ActionService
         prompt_message.gsub('[GET_ALL_CLIENTS]', client_names.join('. '))
       end
 
-      def get_client_phone_numbers
+      def get_clients_phone_numbers
         client_phone_numbers = clients.map { |c| c.phone_number.to_s.presence }.compact
-        prompt_message.gsub('[GET_CLIENT_PHONE_NUMBERS]', client_phone_numbers.join(', '))
+        prompt_message.gsub('[GET_CLIENTS_PHONE_NUMBERS]', client_phone_numbers.join(', '))
       end
 
       def create_client
