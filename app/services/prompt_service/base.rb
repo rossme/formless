@@ -5,7 +5,7 @@ module PromptService
     include ActiveModel::Validations
     validates :user, :user_prompt, presence: true
 
-    TRAINING_FILE_ID = 3
+    TRAINING_FILE_ID = 1
 
     def initialize(user:, user_prompt:)
       @user = user
