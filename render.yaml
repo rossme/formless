@@ -34,5 +34,10 @@ services:
         fromDatabase:
           name: formless
           property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: sidekiq-redis
+          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
