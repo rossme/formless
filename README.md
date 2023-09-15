@@ -1,5 +1,7 @@
 
-An app for onboarding new clients with minimal effort. Using a combination of AI, a fine-tuned model and Ruby on Rails, the generated responses are used to create actions within the application.
+Proof of concept. An app for onboarding new clients with minimal effort. Using a combination of AI, a fine-tuned model and Ruby on Rails, the generated responses are used to create actions within the application.
+
+See release notes for further information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
