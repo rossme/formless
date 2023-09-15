@@ -4,6 +4,26 @@ databases:
     user: formless_db_user
 
 services:
+  - type: redis
+    name: sidekiq-redis
+    region: ohio
+    maxmemoryPolicy: noeviction
+    ipAllowList: [ ] # only allow internal connections
+
+  - type: worker
+    name: sidekiq-worker
+    runtime: ruby
+    region: ohio
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: sidekiq-redis
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
   - type: web
     name: formless
     runtime: ruby
