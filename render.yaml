@@ -6,16 +6,16 @@ databases:
 services:
   - type: redis
     name: sidekiq-redis
-    region: oregon
+    region: ohio
     maxmemoryPolicy: noeviction
     ipAllowList: [ ] # only allow internal connections
 
   - type: worker
     name: sidekiq-worker
     runtime: ruby
-    region: oregon
+    region: ohio
     buildCommand: bundle install
-    startCommand: REDIS_URL="${REDIS_URL}" bundle exec sidekiq -e production
+    startCommand: bundle exec sidekiq
     envVars:
       - key: REDIS_URL
         fromService:
