@@ -9,6 +9,10 @@ module ApplicationHelper
     alert: 'warning'
   }.freeze
 
+  def remote_ip_address
+    request.remote_ip
+  end
+
   def flash_class(level)
     FLASH_LEVELS[level.to_sym]
   end

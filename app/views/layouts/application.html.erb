@@ -11,6 +11,11 @@
   </head>
 
   <body class="bg-light-subtle">
+    <div class="text-secondary text-sm-end container pt-4">
+      <code>
+        <%= remote_ip_address %>
+      </code>
+    </div>
     <div class="text-center">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= flash_class(key) %>" role="alert">
