@@ -15,7 +15,7 @@ services:
     runtime: ruby
     region: oregon
     buildCommand: bundle install
-    startCommand: bundle exec sidekiq
+    startCommand: bundle exec sidekiq -r ./main.rb
     envVars:
       - key: REDIS_URL
         fromService:
