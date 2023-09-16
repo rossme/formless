@@ -1,0 +1,11 @@
+<%# Display flash notifications in application.html.erb %>
+
+<div class="text-center">
+  <% flash.each do |key, value| %>
+    <% set_style_class = flash_class(key) %>
+    <% next unless set_style_class %>
+    <div class="alert alert-<%= set_style_class %>" role="alert">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
