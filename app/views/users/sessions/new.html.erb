@@ -1,3 +1,5 @@
+<%= render 'layouts/github_header' %>
+
 <div class="mx-2 mt-2 d-flex justify-content-center">
   <div class="row m-4">
     <div class="col-md-12 mb-4">
@@ -6,6 +8,7 @@
           <h6 class="lead text-center pt-2">You can find login details on the formless github repo</h6>
         </div>
         <div class="row card-body m-4">
+
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-inputs">
               <%= f.input :email,
