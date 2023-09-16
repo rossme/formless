@@ -1,12 +1,12 @@
-<div class="row mx-5 pt-5 pb-2">
-  <p class="col-6 text-secondary fs-6 text-sm-start">
-    <code class="text-secondary fs-6">
-      <%#= remote_ip_address %>
+<div class="row mx-5 pt-5">
+  <p class="col-6 text-sm-start">
+    <code class="text-secondary">
+      <%= remote_ip_address %>
     </code>
   </p>
   <div class="col-6 link-underline-opacity-0 text-sm-end">
     <code>
-      <%= link_to("https://www.github.com/rossme/formless", class: 'link-underline-opacity-0 text-secondary text-sm-end link-dark', target: '_blank') do %>
+      <%= link_to("#{ENV['GITHUB_REPO']}", class: 'link-underline-opacity-0 text-secondary text-sm-end link-dark', target: '_blank') do %>
         <%= "latest release: #{latest_github_release}" %> <i class="bi bi-github" class="text-secondary"></i>
       <% end %>
     </code>

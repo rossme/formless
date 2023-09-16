@@ -6,18 +6,14 @@
     <div class="p-3 m-3">
       <div class="row">
         <div class="col-sm-11 pt-2 text-secondary">
-          Prompt: <code><%= prompt.id %></code>
+          Prompt <code><%= prompt.id %></code>
         </div>
         <div class="col-sm-1 ">
-          <!-- Regenerate prompt with hotwire -->
-          <%= turbo_frame_tag "first_turbo_frame" do %>
-            <%= button_to prompts_path(prompt: { input: prompt.input }), class: 'btn btn-light text-secondary border' do %>
-              <i class="bi bi-bootstrap-reboot"></i>
-            <% end %>
+          <%= button_to prompts_path(prompt: { input: prompt.input }), class: 'btn btn-light text-secondary border' do %>
+            <i class="bi bi-bootstrap-reboot"></i>
           <% end %>
         </div>
       </div>
-
 
       <p class="my-3">
         <code><%= prompt.input %></code>
