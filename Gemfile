@@ -59,6 +59,9 @@ gem 'ruby-openai'
 # Use simple_form
 gem 'simple_form'
 
+# Github API wrapper
+gem 'octokit', '~> 5.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
