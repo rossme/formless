@@ -1,11 +1,13 @@
+
 <div class="card-header">
   <h6 class="lead text-center pt-2">Rails Application Action</h6>
 </div>
 
 <div class="card-body">
+  <% @prompts.each_with_index do |prompt, index| %>
 
-  <% @prompts.each do |prompt| %>
-    <div class="p-3 m-3">
+    <!-- Stimulus - a simple controller to focus on the first prompt -->
+    <div class="p-3 m-3" id="needs-focus" data-controller="focus" data-focus-first-value="<%= index %>">
       <p class="my-2 text-secondary">
         Prompt: <code><%= prompt.id %></code>
       </p>
