@@ -14,7 +14,9 @@
     <!-- Move to _flash partial -->
     <div class="text-center">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= flash_class(key) %>" role="alert">
+        <% set_style_class = flash_class(key) %>
+        <% next unless set_style_class %>
+        <div class="alert alert-<%= set_style_class %>" role="alert">
           <%= value %>
         </div>
       <% end %>

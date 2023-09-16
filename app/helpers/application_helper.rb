@@ -18,6 +18,6 @@ module ApplicationHelper
   end
 
   def flash_class(level)
-    FLASH_LEVELS[level.to_sym]
+    FLASH_LEVELS[level&.to_sym].presence
   end
 end

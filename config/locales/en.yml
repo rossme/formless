@@ -30,7 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  middleware:
+    rate_limit:
+      error:
+        exceeded: "OpenAI rate limit exceeded. You have made too many API requests. Please try again later."
   prompt_service:
     error:
       token_count: 'You have exceeded the number of prompt characters permitted'
