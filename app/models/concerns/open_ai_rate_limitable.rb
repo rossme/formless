@@ -10,7 +10,7 @@ module OpenAiRateLimitable
   def exceeds_api_rate_limit?
     return false if prompts.none?
 
-    requests_in_window = prompts.where('created_at >= ?', TIME_WINDOW.ago)&.count
+    requests_in_window = prompts.where('created_at >= ?', TIME_WINDOW.ago).count
     requests_in_window > API_RATE_LIMIT
   end
 end
