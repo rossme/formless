@@ -9,6 +9,10 @@ module ApplicationHelper
     alert: 'warning'
   }.freeze
 
+  def latest_github_release
+    Octokit.latest_release('rossme/formless')&.tag_name
+  end
+
   def remote_ip_address
     request.remote_ip
   end

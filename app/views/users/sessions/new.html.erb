@@ -1,0 +1,32 @@
+<div class="mx-2 mt-2 d-flex justify-content-center">
+  <div class="row m-4">
+    <div class="col-md-12 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="lead text-center pt-2">You can find login details on the formless github repo</h6>
+        </div>
+        <div class="row card-body m-4">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                          placeholder: 'Username',
+                          label: false,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email", class: 'form-control form-control-md mb-2' } %>
+              <%= f.input :password,
+                          placeholder: 'Password',
+                          label: false,
+                          required: false,
+                          input_html: { autocomplete: "current-password", class: 'form-control form-control-md' } %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: 'btn btn-light text-secondary border mt-2' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

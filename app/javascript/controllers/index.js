@@ -2,7 +2,10 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
+// $ yarn run build
+// running the above helps recompile the controllers
+
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import FocusController from "./focus_controller"
+application.register("focus", FocusController)
