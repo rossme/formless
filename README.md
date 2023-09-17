@@ -1,17 +1,7 @@
 
 Proof of concept. An app for onboarding new clients with minimal effort. Using a combination of AI, a fine-tuned model and Ruby on Rails, the generated responses are used to create actions within the application.
 
-<html>
-  <a href="https://formless.onrender.com/">formless.onrender.com</a>
-</html>
-
-<details>
-  <p>
-    <summary>Login credentials</summary>
-  </p>
-  <p>username: user@formless.ai</p>
-  <p>password: 123123123</p>
-</details>
+See the PoC: [formless.onrender.com](https://formless.onrender.com/)
 
 See release notes for further information.
 
