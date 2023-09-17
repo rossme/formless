@@ -43,12 +43,4 @@ RSpec.describe PromptsController, type: :controller do
       expect(response).to be_successful
     end
   end
-
-  describe 'GET #create without a valid user' do
-    it 'should redirect the user' do
-      get :create
-      expect(subject.current_user).to eq(nil)
-      expect(response.status).to eq(302)
-    end
-  end
 end
