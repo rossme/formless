@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   include OpenAiRateLimitable
 
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :timeoutable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   has_many :prompts, dependent: :destroy
   has_many :clients, dependent: :destroy
