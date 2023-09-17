@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 require 'support/devise'
-require 'pry'
+
 RSpec.describe ApplicationController, type: :controller do
 
   describe '#sign_in_fake_user' do
