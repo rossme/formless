@@ -1,0 +1,70 @@
+---
+openapi: 3.0.0
+info:
+  title: Prompts API
+  version: 1.0.0
+paths:
+  /api/v1/prompts:
+    get:
+      summary: List all prompts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Prompt'
+
+  /api/v1/prompts/{id}:
+    get:
+      summary: Get a prompt by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the prompt
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+
+components:
+  schemas:
+    Prompt:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+          description: The ID of the user who created the prompt.
+        input:
+          type: string
+          description: The input content of the prompt.
+        output:
+          type: string
+          description: The output content of the prompt.
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        actioned:
+          type: boolean
+          description: If the prompt has been actioned.
+        action:
+          type: string
+        actionable_type:
+          type: string
+          description: Polymorphic object type of the actionable.
+        actionable_id:
+          type: integer
+      required:
+        - user_id
+        - input
