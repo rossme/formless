@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   # API V1 routes
   namespace :api do
     namespace :v1 do
-      resources :prompts
+      resources :prompts, only: %i[index show]
+      resources :schema,  only: %i[index]
     end
   end
 
