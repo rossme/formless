@@ -3,15 +3,21 @@
 module Api
   module V1
     class PromptsController < BaseController
+      before_action :fetch_prompts, only: %i[show index]
+      around_action :action_response, only: %i[show index]
 
-      def show
-        prompt = Prompt.find(params[:id])
-        respond_with(resource: prompt, status: :ok)
+      def show; end
+
+      def index; end
+
+      private
+
+      def action_response
+        respond_with(resource: @prompts, status: :ok)
       end
 
-      def index
-        prompts = Prompt.all
-        respond_with(resource: prompts, status: :ok)
+      def fetch_prompts
+        @prompts = Prompt.find_by(id: params[:id]) || Prompt.all
       end
     end
   end

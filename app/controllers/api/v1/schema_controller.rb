@@ -13,7 +13,7 @@ module Api
       end
 
       def schema_path
-        Rails.root.join('config', 'openapi', 'api_v1_schema.yaml')
+        @schema_path ||= Rails.root.join('config', 'documentation', 'openapi', 'api_v1_schema.yaml')
       end
     end
   end
