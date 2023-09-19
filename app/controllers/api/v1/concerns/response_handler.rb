@@ -6,8 +6,8 @@ module Api::V1
     module ResponseHandler
       extend ActiveSupport::Concern
 
-      def respond_with(resource:, status:)
-        render json: response_serializer(resource), status: status
+      def respond_with(serializer:, status:)
+        render json: serializer, status: status
       end
 
       def response_serializer(resource)
