@@ -4,6 +4,8 @@ class Prompt < ApplicationRecord
   validates :user_id, presence: true
   validates :input, presence: true
 
+  paginates_per 18 # kaminari
+
   belongs_to :user
   belongs_to :actionable, polymorphic: true, optional: true
 

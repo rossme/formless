@@ -59,6 +59,9 @@ gem 'ruby-openai'
 # Use simple_form
 gem 'simple_form'
 
+# Pagination
+gem 'kaminari'
+
 # Github API wrapper
 gem 'octokit', '~> 5.0'
 

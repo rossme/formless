@@ -2,7 +2,7 @@
 
 class PromptsController < ApplicationController
   before_action :set_user
-  before_action :set_prompts
+  before_action :set_prompt, :set_prompts
 
   def index; end
 
@@ -28,8 +28,11 @@ class PromptsController < ApplicationController
   end
 
   def set_prompts
+    @prompts = current_user.prompts.reverse_order.page # page is a kaminari method
+  end
+
+  def set_prompt
     @prompt = Prompt.new
-    @prompts = current_user.prompts.limit(20).reverse_order
   end
 
   def call_async_service(service)
