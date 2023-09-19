@@ -2,10 +2,15 @@
 
 module Api::V1
 
-  # This controller is responsible for handling the json response of the API
   class BaseController < ActionController::API
-    include Api::V1::Concerns::ResponseHandler
-
     respond_to :json
+
+    def render_response
+      raise NotImplementedError
+    end
+
+    def serializer
+      raise NotImplementedError
+    end
   end
 end

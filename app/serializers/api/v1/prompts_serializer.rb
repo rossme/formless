@@ -4,18 +4,22 @@ module Api
   module V1
     class PromptsSerializer
 
-      def initialize(resource)
-        @resource = resource
+      def initialize(prompts)
+        @prompts = prompts
       end
 
-      attr_reader :resource
+      attr_reader :prompts
 
-      def serialize_object
-        resource.serializable_hash
+      def call
+        prompts.is_a?(Prompt) ? serializable_object : serializable_collection
       end
 
-      def serialize_collection
-        resource(&:serializable_hash)
+      def serializable_collection
+        prompts.map(&:serializable_hash)
+      end
+
+      def serializable_object
+        prompts.serializable_hash
       end
     end
   end
