@@ -28,7 +28,7 @@ services:
     name: formless
     runtime: ruby
     region: oregon
-    buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean;
+    buildCommand: ./bin/render-build.sh
     startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
     envVars:
       - key: REDIS_URL
