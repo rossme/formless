@@ -13,6 +13,10 @@ module ApplicationHelper
     Octokit.latest_release('rossme/formless')&.tag_name
   end
 
+  def latest_deployed_release
+    Octokit.deployments('rossme/formless').first[:updated_at]
+  end
+
   def remote_ip_address
     request.remote_ip
   end
