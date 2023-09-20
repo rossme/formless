@@ -1,10 +1,11 @@
 <%# remote_ip_address is also available in application_helper %>
 
+
 <div class="row mx-5 pt-4">
-  <div class="col-12 link-underline-opacity-0 text-sm-end pb-3">
+  <div class="col-12 link-underline-opacity-0 text-sm-end pb-2">
     <code>
       <%= link_to("#{ENV['GITHUB_REPO']}", class: 'link-underline-opacity-0 text-secondary text-sm-end link-dark', target: '_blank') do %>
-        <%= "latest release: #{latest_github_release}" %> <i class="bi bi-github" class="text-secondary"></i>
+        <%= "Latest release: #{latest_github_release} deployed #{latest_deployed_release}" %> <i class="bi bi-github" class="text-secondary"></i>
       <% end %>
     </code>
   </div>
