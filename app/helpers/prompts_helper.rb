@@ -1,4 +1,3 @@
 # frozen_string_literal: true
 
-module PromptsHelper
-end
+module PromptsHelper; end

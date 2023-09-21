@@ -77,6 +77,8 @@ Formless is hosted on [formless.onrender.com](https://formless.onrender.com) and
 - `sidekiq-redis`: Supports Sidekiq for asynchronous task processing.
 - `PostgreSQL 15`: The application's database is powered by PostgreSQL 15.
 
+Please note; as part of the deployment process, the formless database is cleaned and re-seeded periodically.
+
 ---
 
 *Please refer to this README for an in-depth understanding of Formless and its technical underpinnings.*
