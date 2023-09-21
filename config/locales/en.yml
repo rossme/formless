@@ -30,6 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  application:
+    release_details:
+      info: "Latest release: %{latest_release} deployed %{latest_deploy}"
+      error: "Unable to retrieve GitHub release details with Octokit."
   middleware:
     rate_limit:
       error:
