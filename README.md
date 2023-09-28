@@ -67,7 +67,7 @@ Test-Driven Development is an integral part of the development process. RSpec is
 
 ### API v1 Serialization and Documentation
 
-In addition to the standalone application, there are also some api/v1 endpoints where all user prompts can be requested and the api schema docuemtation can also be retrieved.
+In addition to the standalone application, there are also some api/v1 endpoints where all user prompts can be requested and the api schema documentation can also be retrieved.
 
 ### Hosting
 
