@@ -33,7 +33,7 @@ en:
   application:
     release_details:
       info: "Latest release: %{latest_release} deployed %{latest_deploy}"
-      error: "Unable to retrieve GitHub release details with Octokit."
+      error: "Unable to retrieve GitHub release details with Octokit. Your access token may have expired."
   views:
     prompt:
       form:
