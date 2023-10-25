@@ -45,6 +45,10 @@ The Rails application interprets these queries and populates the placeholders wi
 
 - **OpenAiRateLimitable**: This middleware helps limit and manage OpenAI requests, preventing rate limits from being exceeded. It fetches user session information through Warden and keeps track of the number of user requests made within the last hour.
 
+### Caching
+
+- **Rails Caching**: I highly recommend caching and I think it is not used enough in Production environments. I am using caching to store the latest repo release details from the GitHub API (see an example in `application_helper.rb`). This is to avoid making unnecessary requests to the API with Octokit. The cache is cleared every 24 hours.
+
 ### Devise
 
 A default fake user is assigned to the session, simplifying the application's use. It's important to note that this approach is recommended for the proof of concept phase.
