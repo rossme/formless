@@ -34,6 +34,7 @@ en:
     release_details:
       info: "Latest release: %{latest_release} deployed %{latest_deploy}"
       error: "Unable to retrieve GitHub release details with Octokit. Your access token may have expired."
+      caching: "Cache miss: Executing code block for octokit_request."
   views:
     prompt:
       form:
